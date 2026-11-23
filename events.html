@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="color-scheme" content="light dark" />
+  <link rel="icon" href="data:," />
+  <title>Events — Tampa Bay Visitors Bureau</title>
+  <meta name="description" content="A student-designed visitor guide to Tampa Bay attractions, festivals, neighborhoods and trip planning." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,600;0,700;1,600&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      color-scheme: light dark;
+      --ink:#10343a; --muted:#4f686a; --paper:#f6fbf9; --panel:#ffffff;
+      --navy:#072f38; --teal:#087f78; --teal-2:#d5f0ea; --orange:#f06d3c;
+      --sun:#ffc857; --line:#cfe0dc; --sand:#fff2d6; --shadow:0 18px 50px rgba(13,53,58,.12);
+    }
+    @media (prefers-color-scheme: dark){
+      :root{--ink:#e9f7f4;--muted:#b5cbc7;--paper:#071f24;--panel:#0c2d33;--navy:#03191e;--teal:#4cc8b6;--teal-2:#123f40;--orange:#ff8b61;--sun:#ffd36f;--line:#285157;--sand:#4a381d;--shadow:0 18px 50px rgba(0,0,0,.28)}
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth;scroll-padding-top:76px}
+    body{margin:0;background:var(--paper);color:var(--ink);font-family:"DM Sans",sans-serif;line-height:1.55}
+    a{color:inherit} button{font:inherit}
+    img{display:block;width:100%}
+    .topbar{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--navy) 94%,transparent);color:#fff;border-bottom:1px solid rgba(255,255,255,.14);backdrop-filter:blur(12px)}
+    .nav{width:min(1160px,calc(100% - 32px));margin:auto;min-height:66px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+    .wordmark{font-family:"Bitter",serif;font-weight:700;letter-spacing:-.02em;white-space:nowrap}.wordmark span{color:var(--sun)}
+    .navlinks{display:flex;gap:8px;align-items:center}.navlinks a{text-decoration:none;padding:8px 11px;border-radius:6px;font-size:.9rem;font-weight:600;color:#eefdf9}.navlinks a:hover,.navlinks a:focus-visible{background:rgba(255,255,255,.12)}
+    .menu{display:none;border:1px solid rgba(255,255,255,.35);background:transparent;color:#fff;border-radius:7px;padding:8px 10px}
+    .hero{min-height:680px;position:relative;display:grid;align-items:end;overflow:hidden;color:white;background:var(--navy)}
+    .hero::before{content:"";position:absolute;inset:0;background:var(--navy) center/cover no-repeat;filter:saturate(.88)}
+    .hero::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(3,31,37,.92) 0%,rgba(3,31,37,.68) 48%,rgba(3,31,37,.12) 85%),linear-gradient(0deg,rgba(3,31,37,.76) 0%,transparent 52%)}
+    .hero-inner{position:relative;z-index:2;width:min(1160px,calc(100% - 32px));margin:0 auto;padding:96px 0 72px}
+    .place-tag{display:inline-flex;align-items:center;gap:8px;font-size:.9rem;font-weight:700;color:#d8fffa}.place-tag::before{content:"";width:34px;height:2px;background:var(--sun)}
+    h1,h2,h3{font-family:"Bitter",serif;margin-top:0;line-height:1.08}
+    h1{font-size:clamp(3.35rem,8vw,7rem);max-width:820px;letter-spacing:-.055em;margin:.35rem 0 1rem}.hero h1 em{color:var(--sun);font-style:italic}
+    .hero-copy{max-width:660px;font-size:clamp(1.05rem,2vw,1.25rem);color:#e4f7f3;margin:0 0 28px}
+    .hero-actions{display:flex;gap:12px;flex-wrap:wrap}.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;text-decoration:none;border:0;border-radius:8px;padding:12px 18px;font-weight:700;cursor:pointer}.btn-primary{background:var(--orange);color:#fff}.btn-primary:hover{background:#d95529}.btn-ghost{border:1px solid rgba(255,255,255,.56);color:#fff;background:rgba(0,0,0,.14)}
+    .quickfacts{position:relative;z-index:3;width:min(1160px,calc(100% - 32px));margin:-30px auto 0;display:grid;grid-template-columns:repeat(3,1fr);background:var(--panel);border:1px solid var(--line);box-shadow:var(--shadow)}
+    .quickfact{padding:24px 28px;border-right:1px solid var(--line)}.quickfact:last-child{border:0}.quickfact strong{display:block;color:var(--teal);font-size:.8rem;text-transform:uppercase;letter-spacing:.1em;margin-bottom:4px}.quickfact span{font-family:"Bitter",serif;font-size:1.1rem;font-weight:600}
+    section{padding:92px 0}.wrap{width:min(1160px,calc(100% - 32px));margin:auto}.section-head{display:flex;align-items:end;justify-content:space-between;gap:30px;margin-bottom:34px}.section-head>div{max-width:680px}.eyebrow{color:var(--teal);text-transform:uppercase;letter-spacing:.13em;font-size:.75rem;font-weight:800;margin:0 0 8px}.section-head h2{font-size:clamp(2.1rem,4vw,3.5rem);letter-spacing:-.035em;margin-bottom:10px}.section-head p{color:var(--muted);margin:0;font-size:1.04rem}
+    .filters{display:flex;flex-wrap:wrap;gap:8px}.filter{border:1px solid var(--line);background:var(--panel);color:var(--ink);padding:9px 13px;border-radius:999px;font-weight:700;cursor:pointer}.filter[aria-pressed="true"]{background:var(--navy);color:#fff;border-color:var(--navy)}
+    .discover-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:18px}.spot{grid-column:span 4;background:var(--panel);border-bottom:4px solid var(--teal);box-shadow:0 8px 26px rgba(13,53,58,.08);min-height:420px;display:flex;flex-direction:column}.spot.wide{grid-column:span 8}.spot.full{grid-column:span 12}.spot-media{height:230px;overflow:hidden}.wide .spot-media{height:300px}.full .spot-media{height:340px}.spot img{height:100%;object-fit:cover;transition:transform .5s ease}.spot:hover img{transform:scale(1.025)}.spot-body{padding:22px;display:flex;flex-direction:column;flex:1}.spot-meta{display:flex;justify-content:space-between;gap:12px;color:var(--teal);font-size:.75rem;text-transform:uppercase;letter-spacing:.09em;font-weight:800}.spot h3{font-size:1.5rem;margin:10px 0 8px}.spot p{color:var(--muted);margin:0 0 18px}.spot a{margin-top:auto;font-weight:800;text-decoration-thickness:2px;text-underline-offset:4px}.spot[hidden]{display:none}
+    .events{background:var(--navy);color:white;position:relative;overflow:hidden}.events::before{content:"";position:absolute;right:-90px;top:-100px;width:330px;height:330px;border:52px solid rgba(255,200,87,.10);border-radius:50%}.events .eyebrow{color:var(--sun)}.events .section-head p{color:#c8dedb}.event-list{border-top:1px solid rgba(255,255,255,.2)}.event{display:grid;grid-template-columns:130px 1fr auto;gap:26px;align-items:center;padding:26px 4px;border-bottom:1px solid rgba(255,255,255,.2)}.datebox{font-family:"Bitter",serif;color:var(--sun);font-weight:700;font-size:1.15rem}.datebox span{display:block;color:#fff;font-family:"DM Sans",sans-serif;font-size:.74rem;text-transform:uppercase;letter-spacing:.1em}.event h3{font-size:1.45rem;margin:0 0 6px}.event p{color:#c8dedb;margin:0}.event a{font-weight:800;color:#fff;text-underline-offset:4px}
+    .planner-layout{display:grid;grid-template-columns:.8fr 1.2fr;gap:30px;align-items:start}.planner-copy{position:sticky;top:100px}.planner-copy h2{font-size:clamp(2.2rem,4vw,3.6rem);letter-spacing:-.04em}.planner-copy p{color:var(--muted)}.day-controls{display:flex;gap:9px;margin-top:24px}.day-btn{border:1px solid var(--line);background:var(--panel);color:var(--ink);border-radius:7px;padding:11px 15px;font-weight:800;cursor:pointer}.day-btn[aria-pressed="true"]{background:var(--orange);color:white;border-color:var(--orange)}
+    .plan{background:var(--panel);border:1px solid var(--line);box-shadow:var(--shadow)}.plan-title{padding:24px 28px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;gap:20px;align-items:center}.plan-title h3{margin:0;font-size:1.6rem}.plan-title span{font-size:.84rem;color:var(--muted)}.stop{display:grid;grid-template-columns:70px 1fr;gap:20px;padding:24px 28px;border-bottom:1px solid var(--line)}.stop:last-child{border:0}.stop-time{font-weight:800;color:var(--teal);font-variant-numeric:tabular-nums}.stop h4{margin:0 0 4px;font-size:1rem}.stop p{margin:0;color:var(--muted);font-size:.94rem}.extra{display:none}.plan[data-days="2"] .extra{display:grid}
+    .trip-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}.trip-card{padding:28px;background:var(--panel);border-top:5px solid var(--orange)}.trip-card:nth-child(2){border-color:var(--teal)}.trip-card h3{font-size:1.4rem;margin-bottom:16px}.trip-card ul{list-style:none;margin:0;padding:0}.trip-card li{padding:10px 0;border-top:1px solid var(--line);display:flex;gap:11px}.trip-card li::before{content:"";width:9px;height:9px;border:2px solid var(--teal);border-radius:50%;margin-top:7px;flex:0 0 auto}.trip-card strong{display:block}.trip-card span{color:var(--muted);font-size:.92rem}
+    .food-band{display:grid;grid-template-columns:1.05fr .95fr;background:var(--sand);align-items:stretch}.food-band img{height:100%;min-height:430px;object-fit:cover}.food-copy{padding:clamp(36px,7vw,78px);align-self:center}.food-copy h2{font-size:clamp(2.2rem,5vw,4.4rem);letter-spacing:-.045em;margin-bottom:16px}.food-copy p{color:var(--muted);font-size:1.05rem}.food-note{display:block;margin-top:22px;font-weight:800;color:var(--teal)}
+    footer{background:#03191e;color:#dcebe8;padding:50px 0 36px}.footer-grid{display:grid;grid-template-columns:1.3fr 1fr;gap:50px}.footer-grid h2{font-size:2rem;margin-bottom:10px}.footer-grid p{color:#aec3c0;max-width:560px}.source-links{display:grid;grid-template-columns:1fr 1fr;gap:9px 18px}.source-links a{color:#e8fffb;font-size:.9rem;text-underline-offset:3px}.credit{margin-top:30px;padding-top:22px;border-top:1px solid #28474c;color:#8da8a4;font-size:.78rem}.credit a{color:#b6cfcb}
+    .reveal{opacity:1;transform:none}
+    .card-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .mini-card{background:var(--panel);border:1px solid var(--line);padding:22px;display:flex;flex-direction:column}
+    .mini-card h3{font-size:1.2rem;margin:0 0 8px}.mini-card p{color:var(--muted);margin:0 0 12px;font-size:.95rem}
+    .mini-card .tag{align-self:flex-start;font-size:.72rem;font-weight:800;text-transform:uppercase;letter-spacing:.09em;color:var(--teal);background:var(--teal-2);padding:4px 9px;border-radius:999px;margin-bottom:12px}
+    .fav-btn{margin-top:auto;align-self:flex-start;border:1px solid var(--line);background:transparent;color:var(--ink);border-radius:7px;padding:8px 12px;font-weight:700;cursor:pointer;font-size:.88rem}
+    .fav-btn[aria-pressed="true"]{background:var(--sun);border-color:var(--sun);color:#10343a}
+    .alt-band{background:var(--teal-2)}
+    .list-cols{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .list-box{background:var(--panel);border:1px solid var(--line);padding:22px}
+    .list-box h3{font-size:1.15rem;margin-bottom:10px}.list-box ul{margin:0;padding-left:18px;color:var(--muted)}.list-box li{margin-bottom:6px}
+    .cal{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+    .cal-month{background:var(--panel);border:1px solid var(--line);padding:18px}
+    .cal-month h3{font-size:1.05rem;margin-bottom:6px;color:var(--teal)}.cal-month p{color:var(--muted);margin:0;font-size:.9rem}
+    .trip-table{width:100%;border-collapse:collapse;background:var(--panel);border:1px solid var(--line)}
+    .trip-table th,.trip-table td{padding:13px 16px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
+    .trip-table th{background:var(--navy);color:#fff;font-family:"Bitter",serif}
+    .trip-table td:first-child{font-weight:700;white-space:nowrap}
+    .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-bottom:26px}
+    .stat{background:var(--navy);color:#fff;padding:24px;text-align:center}
+    .stat strong{display:block;font-family:"Bitter",serif;font-size:2rem;color:var(--sun)}
+    .stat span{font-size:.88rem;color:#c8dedb}
+    .fact{background:var(--sand);border:1px solid var(--line);padding:20px 22px;margin-bottom:14px}
+    .fact strong{color:var(--teal)}
+    .gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+    .gallery figure{margin:0}.gallery img{height:220px;object-fit:cover}
+    .gallery figcaption{font-size:.85rem;color:var(--muted);padding:8px 2px 0}
+    .reviews{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .review{background:var(--panel);border:1px solid var(--line);padding:24px}
+    .review .stars{color:var(--orange);letter-spacing:2px;margin-bottom:10px}
+    .review p{margin:0 0 12px}.review footer{background:none;color:var(--muted);padding:0;font-size:.88rem;font-weight:700}
+    details.faq{background:var(--panel);border:1px solid var(--line);margin-bottom:10px;padding:0}
+    details.faq summary{cursor:pointer;font-weight:700;padding:16px 20px;font-family:"Bitter",serif}
+    details.faq p{padding:0 20px 18px;color:var(--muted);margin:0}
+    #map{height:420px;border:1px solid var(--line);z-index:1}
+    .fav-summary{background:var(--panel);border:1px solid var(--line);padding:22px;margin-top:18px}
+    .check-list{list-style:none;margin:0;padding:0;columns:2;column-gap:34px}
+    .check-list li{padding:8px 0;border-bottom:1px solid var(--line);display:flex;gap:10px;break-inside:avoid}
+    .check-list li::before{content:"";width:14px;height:14px;border:2px solid var(--teal);flex:0 0 auto;margin-top:4px}
+    .itin-panel{background:var(--panel);border:1px solid var(--line);box-shadow:var(--shadow);padding:26px 28px}
+    .itin-panel h3{font-size:1.5rem;margin-bottom:8px}.itin-panel ol{margin:0;padding-left:20px;color:var(--muted)}.itin-panel li{margin-bottom:7px}
+    .emergency{background:#fdeceb;border:1px solid #e8a09a;color:#5c1a14;padding:16px 20px;font-size:.95rem}
+    @media(prefers-color-scheme:dark){.emergency{background:#3d1512;border-color:#7a3a33;color:#f3c4bd}}
+    @media(max-width:900px){.card-grid,.list-cols,.reviews{grid-template-columns:1fr 1fr}.cal{grid-template-columns:1fr 1fr}.stats{grid-template-columns:1fr 1fr}.gallery{grid-template-columns:1fr 1fr}}
+    @media(max-width:600px){.card-grid,.list-cols,.reviews,.cal,.gallery{grid-template-columns:1fr}.check-list{columns:1}.trip-table td:first-child{white-space:normal}}
+    @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.spot img{transition:none}}
+    @media(max-width:780px){
+      .nav{min-height:60px}.menu{display:block}.navlinks{display:none;position:absolute;left:0;right:0;top:60px;background:var(--navy);padding:12px 16px 18px;flex-direction:column;align-items:stretch}.navlinks.open{display:flex}.navlinks a{padding:11px}
+      .hero{min-height:620px}.hero::after{background:linear-gradient(0deg,rgba(3,31,37,.94) 0%,rgba(3,31,37,.56) 75%,rgba(3,31,37,.18))}.hero-inner{padding-bottom:66px}h1{font-size:clamp(3rem,16vw,4.9rem)}
+      .quickfacts{grid-template-columns:1fr;margin-top:-20px}.quickfact{border-right:0;border-bottom:1px solid var(--line);padding:17px 20px}
+      section{padding:68px 0}.section-head{display:block}.filters{margin-top:20px}
+      .spot,.spot.wide,.spot.full{grid-column:span 12}.spot-media,.wide .spot-media,.full .spot-media{height:235px}
+      .event{grid-template-columns:1fr;gap:8px}.event a{margin-top:4px}
+      .planner-layout{grid-template-columns:1fr}.planner-copy{position:static}.plan-title{align-items:flex-start}.stop{grid-template-columns:58px 1fr;padding:20px}
+      .trip-grid,.food-band,.footer-grid{grid-template-columns:1fr}.food-band img{min-height:300px;max-height:380px}.food-copy{padding:40px 24px}.source-links{grid-template-columns:1fr}
+    }
+  </style>
+
+<style id="site-polish">
+::selection{background:var(--sun);color:var(--navy)}
+body{-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+h1,h2,h3{letter-spacing:-.015em}
+:focus-visible{outline:3px solid var(--sun);outline-offset:2px;border-radius:4px}
+.topbar{box-shadow:0 6px 28px rgba(3,25,30,.22)}
+.wordmark{font-size:1.06rem}
+.eyebrow{letter-spacing:.16em}
+.mini-card,.spot,.trip-card,.review,.cal-month,.list-box,.event,.itin-panel,.stat,.quickfact{border-radius:16px;box-shadow:0 8px 26px rgba(13,53,58,.08);transition:transform .25s ease,box-shadow .25s ease}
+.mini-card:hover,.spot:hover,.trip-card:hover,.review:hover,.cal-month:hover,.event:hover{transform:translateY(-3px);box-shadow:0 16px 34px rgba(13,53,58,.13)}
+.spot img,.gallery img{border-radius:12px}
+.btn{transition:transform .2s ease,box-shadow .2s ease,background .2s ease}
+.btn-primary{box-shadow:0 10px 22px rgba(240,109,60,.32)}
+.btn-primary:hover,.btn-ghost:hover{transform:translateY(-2px)}
+.btn-ghost{box-shadow:0 6px 18px rgba(13,53,58,.10)}
+.fav-btn,.filter,.day-btn{transition:transform .18s ease,background .18s ease,color .18s ease}
+.fav-btn:hover,.filter:hover,.day-btn:hover{transform:translateY(-1px)}
+.tag{border-radius:999px}
+.trip-table{border-collapse:separate;border-spacing:0;border-radius:14px;overflow:hidden;box-shadow:0 10px 28px rgba(13,53,58,.09)}
+.trip-table tbody tr:nth-child(even) td{background:color-mix(in srgb,var(--teal-2) 32%,transparent)}
+details.faq{border-radius:14px;box-shadow:0 6px 20px rgba(13,53,58,.06)}
+details.faq summary{cursor:pointer;transition:color .18s ease}
+details.faq summary:hover{color:var(--teal)}
+#map{border-radius:16px;overflow:hidden;box-shadow:0 12px 30px rgba(13,53,58,.12);border:1px solid var(--line)}
+.check-list li{line-height:1.5}
+#backTop{position:fixed;right:18px;bottom:18px;z-index:40;width:48px;height:48px;border-radius:50%;border:1px solid rgba(255,255,255,.25);background:var(--navy);color:var(--sun);font-size:1.25rem;line-height:1;cursor:pointer;box-shadow:0 12px 26px rgba(3,25,30,.30);opacity:0;pointer-events:none;transform:translateY(8px);transition:opacity .25s ease,transform .25s ease}
+#backTop.show{opacity:1;pointer-events:auto;transform:translateY(0)}
+#backTop:hover{background:var(--teal)}
+@media (prefers-reduced-motion: reduce){*,*::before,*::after{transition:none!important;animation:none!important}html{scroll-behavior:auto}}
+@media print{.topbar,.fav-btn,.filters,.day-controls,#backTop{display:none!important}body{background:#fff}.reveal{opacity:1!important;transform:none!important}.mini-card,.spot,.trip-card,.review,.cal-month,.list-box,.event,.itin-panel{box-shadow:none}}
+</style>
+<style>.navlinks a.active{background:rgba(255,255,255,.18)}.page-head{padding:54px 0 6px}.page-head h1{font-family:"Bitter",serif;font-size:clamp(2.1rem,4.6vw,3.1rem);line-height:1.08;margin:.08em 0 .15em}</style></head>
+<body>
+  <header class="topbar">
+    <nav class="nav" aria-label="Primary navigation">
+      <a class="wordmark" href="index.html" style="text-decoration:none">Tampa <span>Bay</span></a>
+      <button class="menu" type="button" aria-expanded="false" aria-controls="navlinks">Menu</button>
+      <div class="navlinks" id="navlinks"><a href="index.html">Home</a><a href="see-do.html">See & do</a><a href="eat-shop.html">Eat & shop</a><a href="stay-cruises.html">Stay & cruises</a><a href="events.html" class="active" aria-current="page">Events</a><a href="plan.html">Plan a trip</a><a href="guide.html">Visitor guide</a></div>
+    </nav>
+  </header>
+<main>
+<div class="wrap page-head"><p class="eyebrow">Tampa Bay Visitors Bureau</p><h1>Events</h1></div>
+<section class="events" id="events">
+      <div class="wrap">
+        <div class="section-head reveal"><div><p class="eyebrow">Save the date</p><h2>2027 signature events</h2><p>Three weekends when Tampa Bay’s pirate spirit, public art and waterfront energy take center stage.</p></div></div>
+        <div class="event-list">
+          <article class="event reveal"><div class="datebox"><span>Saturday</span>Jan 30</div><div><h3>Gasparilla Pirate Fest</h3><p>A 4.5-mile parade, more than 100 floats and a playful pirate “invasion” along Bayshore Boulevard.</p></div><a href="https://www.visittampabay.com/tampa-events/gasparilla-season/gasparilla-pirate-fest/" target="_blank" rel="noreferrer">Event details ↗</a></article>
+          <article class="event reveal"><div class="datebox"><span>Sat–Sun</span>Mar 6–7</div><div><h3>Gasparilla Festival of the Arts</h3><p>A free juried fine arts festival at Julian B. Lane Riverfront Park.</p></div><a href="https://markets.financialcontent.com/gafri/article/prlog-2026-8-18-gasparilla-arts-names-selection-jurors-for-2027-raymond-james-gasparilla-festival-of-the-arts" target="_blank" rel="noreferrer">2027 announcement ↗</a></article>
+          <article class="event reveal"><div class="datebox"><span>Fri–Sat</span>Apr 30–May 1</div><div><h3>Tampa Riverfest</h3><p>A two-day celebration along the Riverwalk with music, food and waterfront activities.</p></div><a href="https://thetampariverwalk.com/events/riverfest.html?utm_medium=paid&amp;amp;utm_source=fb&amp;amp;utm_id=6094888161938&amp;amp;utm_content=52521336773542&amp;amp;utm_term=52521336773742&amp;amp;utm_campaign=6094888161938" target="_blank" rel="noreferrer">Riverfest details ↗</a></article>
+        </div>
+      </div>
+    </section>
+<section id="calendar">
+      <div class="wrap">
+        <div class="section-head reveal"><div><p class="eyebrow">Plan by month</p><h2>A year in Tampa Bay</h2><p>Signature seasons at a glance. The Ybor City Saturday Market runs weekly year-round; holiday lights take over the Riverwalk and ZooTampa each December.</p></div></div>
+        <div class="cal">
+          <div class="cal-month reveal"><h3>January</h3><p>Gasparilla season begins — Children's Parade, then the Pirate Fest invasion and Parade of Pirates late in the month.</p></div>
+          <div class="cal-month reveal"><h3>February</h3><p>Florida State Fair at the fairgrounds, plus the start of Yankees spring training in Tampa.</p></div>
+          <div class="cal-month reveal"><h3>March</h3><p>Gasparilla Festival of the Arts and Gasparilla Music Festival; spring training in full swing.</p></div>
+          <div class="cal-month reveal"><h3>April</h3><p>Mild beach weather, outdoor concerts and food festivals across the bay area.</p></div>
+          <div class="cal-month reveal"><h3>May</h3><p>Tampa Riverfest opens the month; sunset festivals begin at Pier 60.</p></div>
+          <div class="cal-month reveal"><h3>June</h3><p>Summer nights at Busch Gardens, Pride celebrations, and warm Gulf water.</p></div>
+          <div class="cal-month reveal"><h3>July</h3><p>Fourth of July fireworks over the bay and Boom by the Bay celebrations downtown.</p></div>
+          <div class="cal-month reveal"><h3>August</h3><p>Back-to-school season, indoor museum days, and late-summer food truck rallies.</p></div>
+          <div class="cal-month reveal"><h3>September</h3><p>Buccaneers season kicks off; thinner crowds and warm seas at the beaches.</p></div>
+          <div class="cal-month reveal"><h3>October</h3><p>Guavaween and Halloween events in Ybor City; stone crab season opens mid-month.</p></div>
+          <div class="cal-month reveal"><h3>November</h3><p>Manatees return to Apollo Beach as the water cools; holiday markets begin.</p></div>
+          <div class="cal-month reveal"><h3>December</h3><p>Winter Village at Curtis Hixon Park, ZooTampa's Christmas in the Wild, and the holiday boat parades.</p></div>
+        </div>
+      </div>
+    </section>
+<section id="night" class="alt-band">
+      <div class="wrap">
+        <div class="section-head reveal"><div><p class="eyebrow">Entertainment &amp; nightlife</p><h2>Tampa after dark</h2><p>The Riverwalk glows, the stages light up, and Ybor's 7th Avenue stays lively late.</p></div></div>
+        <div class="card-grid">
+          <article class="mini-card reveal"><span class="tag">Live music</span><h3>Stages big and small</h3><p>Arena concerts downtown, amphitheatre shows at the fairgrounds, and live sets nightly in Ybor City clubs and Armature Works.</p></article>
+          <article class="mini-card reveal"><span class="tag">Comedy &amp; film</span><h3>Comedy clubs &amp; movie nights</h3><p>Stand-up at the Tampa Improv in Ybor, classic and indie film at the historic Tampa Theatre, and giant-screen documentaries at MOSI's IMAX.</p></article>
+          <article class="mini-card reveal"><span class="tag">Evenings out</span><h3>Rooftops &amp; sunsets</h3><p>Rooftop bars in downtown and Hyde Park, an evening Riverwalk stroll past the lit bridges, and sunset viewpoints at Ballast Point Park and Pier 60.</p></article>
+        </div>
+      </div>
+    </section>
+</main>
+<footer>
+    <div class="wrap">
+      <div class="footer-grid"><div><h2>Start with one idea. Leave with a full itinerary.</h2><p>Use official attraction and event pages to confirm hours, pricing and schedules before your visit.</p></div><div class="source-links"><a href="https://www.visittampabay.com/things-to-do/riverwalk/?ref=trip101com" target="_blank" rel="noreferrer">Tampa Riverwalk</a><a href="https://www.flaquarium.org/" target="_blank" rel="noreferrer">Florida Aquarium</a><a href="http://www.ybor.org/vic" target="_blank" rel="noreferrer">Ybor Visitor Center</a><a href="https://www.visitstpeteclearwater.com/?field_related_things_to_do_tid=27&amp;field_related_communities_tid=16" target="_blank" rel="noreferrer">St. Pete–Clearwater</a><a href="https://www.porttb.com/cruise/cruise-destinations/" target="_blank" rel="noreferrer">Port Tampa Bay</a></div></div>
+      <div class="credit">Information checked October 1, 2026; cruise lines, ships, terminals and parking checked November 2026 against Port Tampa Bay's published cruise calendar and tariff. Photo sources: <a href="https://www.tampasbest.com/" target="_blank" rel="noreferrer">Tampa’s Best</a>, <a href="https://www.thebendmag.com/eat-play-stay-western-florida/" target="_blank" rel="noreferrer">The Bend</a>, <a href="https://theskillscenter.org/hoopfest/" target="_blank" rel="noreferrer">The Skills Center</a>, <a href="https://steemit.com/history/@itai0921/busch-gardens-tampa-review-and-history?sort=trending" target="_blank" rel="noreferrer">Steemit contributor</a>, <a href="https://deventuretime.com/page/4/" target="_blank" rel="noreferrer">Deventuretime</a>, <a href="https://www.gonomad.com/224073-cuban-sandwich-tampa-or-miami" target="_blank" rel="noreferrer">GoNOMAD</a>, <a href="https://www.visittampabayspecialist.com/main/promote/images" target="_blank" rel="noreferrer">Visit Tampa Bay</a> (cruise ship at Port Tampa Bay). Map data © <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noreferrer">OpenStreetMap contributors</a>; map powered by the Leaflet library. This site is an original student project created for the FBLA Exploring Website Design event, 2026–27 topic “Explore Your Area: Create a Visitors Bureau Website.” No template was used.</div>
+    </div>
+  </footer>
+<script>
+    (function(){
+      var menu=document.querySelector('.menu'), nav=document.getElementById('navlinks');
+      menu.addEventListener('click',function(){var open=nav.classList.toggle('open');menu.setAttribute('aria-expanded',String(open));});
+      nav.addEventListener('click',function(e){if(e.target.tagName==='A'){nav.classList.remove('open');menu.setAttribute('aria-expanded','false');}});
+      var filters=document.querySelectorAll('.filter'), spots=document.querySelectorAll('.spot');
+      filters.forEach(function(button){button.addEventListener('click',function(){var value=button.getAttribute('data-filter');filters.forEach(function(b){b.setAttribute('aria-pressed',String(b===button));});spots.forEach(function(spot){spot.hidden=value!=='all'&&spot.getAttribute('data-tags').indexOf(value)===-1;});});});
+      var plan=document.querySelector('.plan'), title=document.getElementById('planTitle'), subtitle=document.getElementById('planSubtitle');
+      document.querySelectorAll('.day-btn').forEach(function(button){button.addEventListener('click',function(){var days=button.getAttribute('data-days');document.querySelectorAll('.day-btn').forEach(function(b){b.setAttribute('aria-pressed',String(b===button));});plan.setAttribute('data-days',days);title.textContent=days==='1'?'One perfect day':'Two days, two sides of the bay';subtitle.textContent=days==='1'?'Waterfront + history':'City energy + Gulf calm';});});
+      var nodes=document.querySelectorAll('.reveal');
+      if('IntersectionObserver' in window){var observer=new IntersectionObserver(function(entries){entries.forEach(function(entry){if(entry.isIntersecting){entry.target.classList.add('in');observer.unobserve(entry.target);}});},{threshold:.12});nodes.forEach(function(node){observer.observe(node);});}else{nodes.forEach(function(node){node.classList.add('in');});}
+    })();
+  </script>
+<script>
+    (function(){
+      // Extra itinerary tabs
+      var iBtns=document.querySelectorAll('.itin-btn'), panels=document.querySelectorAll('[data-itin-panel]');
+      iBtns.forEach(function(b){b.addEventListener('click',function(){iBtns.forEach(function(x){x.setAttribute('aria-pressed',String(x===b));});panels.forEach(function(p){p.hidden=p.getAttribute('data-itin-panel')!==b.getAttribute('data-itin');});});});
+      // Favorites (saved in this browser)
+      var favs=[]; try{ favs=JSON.parse(localStorage.getItem('tbvbFavs')||'[]'); }catch(e){ favs=[]; } var favList=document.getElementById('favList'); function saveFavs(){ try{ localStorage.setItem('tbvbFavs', JSON.stringify(favs)); }catch(e){} }
+      function renderFavs(){ if(!favList) return; favList.textContent=favs.length?('★ '+favs.join('  ·  ★ ')):'You haven\u2019t saved anything yet. Tap \u201CSave to favorites\u201D on any beach, museum or food card and your shortlist will appear here \u2014 handy when you present or plan.'; favList.style.color=favs.length?'var(--ink)':'var(--muted)'; }
+      function bindFav(btn){ var nm=btn.getAttribute('data-fav'); if(favs.indexOf(nm)>-1){ btn.setAttribute('aria-pressed','true'); btn.textContent='\u2605 Saved to favorites'; } btn.addEventListener('click',function(){ var name=btn.getAttribute('data-fav'), on=btn.getAttribute('aria-pressed')==='true'; btn.setAttribute('aria-pressed',String(!on)); btn.textContent=!on?'\u2605 Saved to favorites':'\u2606 Save to favorites'; if(!on){ if(favs.indexOf(name)===-1) favs.push(name); } else { favs=favs.filter(function(f){return f!==name;}); } saveFavs(); renderFavs(); }); }
+      document.querySelectorAll('.fav-btn').forEach(bindFav);
+      // Add a save button to the original Discover cards too
+      document.querySelectorAll('.spot-body').forEach(function(body){ var h=body.querySelector('h3'); if(!h) return; var b=document.createElement('button'); b.type='button'; b.className='fav-btn'; b.setAttribute('data-fav',h.textContent); b.setAttribute('aria-pressed','false'); b.textContent='\u2606 Save to favorites'; b.style.marginTop='14px'; body.appendChild(b); bindFav(b); });
+      renderFavs();
+      // Downloadable packing checklist
+      var dl=document.getElementById('downloadChecklist');
+      if(dl){ dl.addEventListener('click',function(){ var items=[]; document.querySelectorAll('.check-list li').forEach(function(li){items.push('\u2610 '+li.textContent.trim());}); var text='Tampa Bay Packing Checklist\n\n'+items.join('\n')+'\n'; var blob=new Blob([text],{type:'text/plain'}); var a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download='tampa-bay-packing-checklist.txt'; document.body.appendChild(a); a.click(); a.remove(); setTimeout(function(){URL.revokeObjectURL(a.href);},2000); }); }
+      // Interactive map
+      if(window.L){ var map=L.map('map').setView([27.975,-82.55],10);
+        L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19,attribution:'\u00A9 OpenStreetMap contributors'}).addTo(map);
+        var places=[
+          ['Downtown Tampa & Riverwalk',27.9506,-82.4572],['Ybor City',27.9612,-82.4384],
+          ['The Florida Aquarium',27.9442,-82.4450],['Port Tampa Bay — cruise terminals',27.9448,-82.4438],['Busch Gardens Tampa Bay',28.0372,-82.4194],
+          ['ZooTampa at Lowry Park',28.0119,-82.4690],['Plant Hall — University of Tampa',27.9475,-82.4643],
+          ['Tampa International Airport',27.9755,-82.5332],['Clearwater Beach',27.9773,-82.8270],
+          ['St. Pete Beach',27.7253,-82.7415],['Fort De Soto Park',27.6476,-82.7170],
+          ['Honeymoon Island State Park',28.0586,-82.8304],['The Dal\u00ED Museum, St. Petersburg',27.7660,-82.6371]
+        ];
+        places.forEach(function(p){ L.marker([p[1],p[2]]).addTo(map).bindPopup('<strong>'+p[0]+'</strong>'); });
+      }
+    })();
+  </script>
+<script>
+(function(){var b=document.createElement("button");b.id="backTop";b.type="button";b.setAttribute("aria-label","Back to top");b.textContent="\u2191";document.body.appendChild(b);var onScroll=function(){if(window.scrollY>600){b.classList.add("show")}else{b.classList.remove("show")}};window.addEventListener("scroll",onScroll,{passive:true});onScroll();b.addEventListener("click",function(){var reduce=window.matchMedia("(prefers-reduced-motion: reduce)").matches;window.scrollTo({top:0,behavior:reduce?"auto":"smooth"})});})();
+</script>
+</body>
+</html>
